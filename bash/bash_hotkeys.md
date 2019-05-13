@@ -1,0 +1,77 @@
+## With Ctrl
+```
+Ctrl+A or Home: Go to the beginning of the line.
+
+Ctrl+B: Go left one character.
+
+Ctrl+D: Close the bash shell. 
+
+Ctrl+D or Delete: Delete the character under the cursor.
+
+Ctrl+E or End: Go to the end of the line.
+
+Ctrl+F: Go right one character.
+
+Ctrl+G: Leave history searching mode without running a command.
+
+Ctrl+H or Backspace: Delete the character before the cursor.
+
+Ctrl+K: Cut the part of the line after the cursor, adding it to the clipboard.
+
+Ctrl+L: Clear the screen. 
+
+Ctrl+N or Down Arrow: Go to the next command in the command history. 
+
+Ctrl+P or Up Arrow: Go to the previous command in the command history. 
+
+Ctrl+R: Recall the last command matching the characters you provide.
+
+Ctrl+S: Stop all output to the screen. 
+
+Ctrl+T: Swap the last two characters before the cursor with each other. 
+
+Ctrl+O: Run a command you found with Ctrl+R.
+
+Ctrl+W: Cut the word before the cursor, adding it to the clipboard.
+
+Ctrl+U: Cut the part of the line before the cursor, adding it to the clipboard.
+
+Ctrl+Q: Resume output to the screen after stopping it with Ctrl+S.
+
+Ctrl+XX: Move between the beginning of the line and the current position of the cursor. 
+
+Ctrl+Y: Paste the last thing you cut from the clipboard. The y here stands for “yank”.
+
+Ctrl+_: Undo your last key press. You can repeat it multiple times.
+```
+
+## With Alt
+```
+Alt+A: Go to the beginning of a line.
+
+Alt+B: Go left one word.
+
+Alt+C: Capitalize the character under the cursor. The cursor will move to the end of the current word.
+
+Alt+D: Delete the word after the cursor.
+
+Alt+F: Go right one word.
+
+Alt+L: Uncapitalize every character from the cursor to the end of the current word.
+
+Alt+R: Revert any changes to a command you’ve pulled from your history.
+
+Alt+T: Swap the current word with the previous word.
+
+Alt+U: Capitalize every character from the cursor to the end of the current word.
+
+```
+
+## Switch modes
+```
+Vi mode:
+set -o vi 
+
+Emacs mode:
+set -o emacs 
+```
