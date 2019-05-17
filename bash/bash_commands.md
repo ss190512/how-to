@@ -127,10 +127,16 @@ $ grep -c import ser_lib.py
 ``` 
 ## Useful aliases.
 ```
-aliase g='git'
+alias g='git'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'
+alias gs='git status'
 ```
 ## Put regexp in the alias.
 ```
 alias my_reg='echo [0-9a-f]...
 ...| grep -E ${my_reg}
 ```
+## && works the same as ;
+
