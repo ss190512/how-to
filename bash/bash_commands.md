@@ -1,4 +1,4 @@
-## Repeating the last argument.
+## Repeating the last argument in scripts.
 ```
 mkdir qqq
 cd !$
@@ -125,5 +125,12 @@ pushd is a shell builtin
 $ grep -c import ser_lib.py
 31
 ``` 
-
-
+## Useful aliases.
+```
+aliase g='git'
+```
+## Put regexp in the alias.
+```
+alias my_reg='echo [0-9a-f]...
+...| grep -E ${my_reg}
+```
