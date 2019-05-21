@@ -1,5 +1,26 @@
-## Repeating the last argument in scripts.
+## Get the directory name from the full file path.
 ```
+$ ls /c/ss/how-to/bash/bash_commands.md
+/c/ss/how-to/bash/bash_commands.md
+$ cd !$:h
+cd /c/ss/how-to/bash
+$ ls bash_commands.md
+bash_commands.md
+```
+## Take arguments from the previous command.
+```
+$ grep something file1
+something
+$ egrep !:1-$
+egrep something file1
+something
+$ ls !:2-$
+ls file1
+file1
+$ ls !$
+ls file1
+file1
+
 mkdir qqq
 cd !$
 ```
@@ -195,4 +216,27 @@ $ echo $LINENO; echo ${SECONDS}; sleep 2; echo ${SECONDS}
 ```
 TMOUT=10
 ```
+## Associative arrays(dictionaries).
+```
+$ declare -A my_dic=([one]=1 [two]=2)
+$ echo ${my_dic[one]}
+1
+$ my_dic[one]="1111111111111111"
+$ echo ${my_dic[one]}
+1111111111111111
+$ my_key=two
+$ echo ${my_dic[$my_key]}
+2
+```
+## "<()" command.
+```
+$ grep "my string" file1 > f1
+$ grep "my string" file2 > f2
+$ diff f1 f2
+0a1
+> my string
 
+$ diff <(grep "my string" file1) <(grep "my string" file2)
+0a1
+> my string
+```
