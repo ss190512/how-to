@@ -139,4 +139,60 @@ alias my_reg='echo [0-9a-f]...
 ...| grep -E ${my_reg}
 ```
 ## && works the same as ;
+## String manipulations.
+```
+$ var="Beginninggddd  of the string."
+$ new_var="${var#Beginning}"
+$ echo $new_var
+of the string.
+
+$ var="Beginning of the string. End its end."
+$ new_var="${var% End its end.}"
+$ echo $new_var
+Beginning of the string.
+```
+## Default values.
+```
+$ first_arg="${1:-no_first_arg}"
+$ echo ${first_arg}
+no_first_arg
+```
+## Traps.
+```
+function cleanup() {
+    echo "Working on cleanup now."
+} 
+trap cleanup TERM INT QUIT
+```
+## Random variable.
+```
+$ echo ${RANDOM}
+4410
+
+$ echo ${RANDOM}${RANDOM}${RANDOM}
+104652305316628
+
+$ my_temp_file=./temp_file_${RANDOM}
+$ touch ${my_temp_file}
+$ ls ${my_temp_file}
+./temp_file_623
+```
+## REPLY variable.
+```
+$ read
+Hello!
+$ echo ${REPLY}
+Hello!
+```
+## More embedded variables.
+```
+$ echo $LINENO; echo ${SECONDS}; sleep 2; echo ${SECONDS}
+67
+23276
+23278
+```
+## Exit in 10 secs.
+```
+TMOUT=10
+```
 
