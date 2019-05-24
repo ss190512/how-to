@@ -42,11 +42,11 @@ Alt+.: Use the last word of the previous command.
 !! - Repeat the last command.
 ```
 ## Switch modes.
-###Vi mode:
+### Vi mode:
 ```
 set -o vi 
 ```
-###Emacs mode:
+### Emacs mode:
 ```
 set -o emacs 
 ```

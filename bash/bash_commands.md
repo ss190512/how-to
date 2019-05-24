@@ -262,3 +262,26 @@ export LESS_TERMCAP_so=$'\e[38;5;246m'    # standout-mode - info box
 export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 ```
+## File and command commands.
+```
+$ file $(which ls)
+/usr/bin/ls: PE32+ executable (console) x86-64 (stripped to external PDB), for MS Windows
+$ file bash_commands.md
+bash_commands.md: ASCII text, with CRLF line terminators
+$ command -V ls
+ls is aliased to `ls -F --color=auto --show-control-chars'
+$ command -V ll
+ll is aliased to `ls -l'
+$ command -V cd
+cd is a shell builtin
+$ command -V find
+find is hashed (/usr/bin/find)
+```
+## Check port by echo.
+```
+-bash-4.4$ echo >/dev/tcp/server_name/22
+
+-bash-4.4$ echo >/dev/tcp/server_name/23
+-bash: connect: Connection refused
+-bash: /dev/tcp/vs-iapp752/23: Connection refused
+```
