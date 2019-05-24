@@ -23,6 +23,10 @@ file1
 
 mkdir qqq
 cd !$
+
+$ touch {one,two,three,four}.txt five.txt six.txt
+$ chmod 777 !*
+chmod 777 {one,two,three,four}.txt five.txt six.txt
 ```
 ## !beginning_of_the_command - Run the last command stared with beginning_of_the_command.
 ## Making a backup or rename the file.
@@ -159,7 +163,10 @@ alias gs='git status'
 alias my_reg='echo [0-9a-f]...
 ...| grep -E ${my_reg}
 ```
-## && works the same as ;
+## && works the same as ; but it runs the next one only if the previous one was successful.
+```
+sudo apt update && sudo apt upgrade
+```
 ## String manipulations.
 ```
 $ var="Beginninggddd  of the string."
@@ -239,4 +246,19 @@ $ diff f1 f2
 $ diff <(grep "my string" file1) <(grep "my string" file2)
 0a1
 > my string
+```
+## z commands(zless, zcat, zgrep etc.) for working with compressed files. 
+## Enable grep colors.
+```
+export GREP_OPTIONS='--color=auto'
+```
+## Add colors to Less/Man pages
+```
+export LESS_TERMCAP_mb=$'\e[01;31m'       # blinking
+export LESS_TERMCAP_md=$'\e[01;38;5;74m'  # bold
+export LESS_TERMCAP_me=$'\e[0m'           # end mode
+export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\e[38;5;246m'    # standout-mode - info box
+export LESS_TERMCAP_ue=$'\e[0m'           # end underline
+export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 ```
