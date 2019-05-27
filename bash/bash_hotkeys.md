@@ -28,7 +28,6 @@ Ctr+[: ESC key.
 ```
 ## Alt commands.
 ```
-Alt+a: Go to the beginning of a line.
 Alt+b: Go left one word.
 Alt+c: Capitalize the character under the cursor. The cursor moves to the end of the current word.
 Alt+d: Delete the word after the cursor.
