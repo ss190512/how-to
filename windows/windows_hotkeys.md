@@ -15,8 +15,7 @@ Ctr+left or right arrow: Move cursor forward/back one word.
 Ctr+F4: Close active document(does not work for some applications).
 Ctr+F6: Cycle windows application windows.
 Ctr+Esc: Search.
-Ctr+e: Search in the file explorer. 
-       Also, Ctrl+e is a search in Chrome.
+Ctr+e: Search in the file explorer. Also, Ctrl+e is a search in Chrome.
 Ctr+n: New application. 
        For example Win+e, Ctrl+n open a file explored and duplicate it.
 Ctr+w: Close file.
@@ -25,7 +24,7 @@ Ctr+Shift+n: Create new folder.
 Ctr+Shift+Esc: Open the task manager.
 Ctr+Win+Left or right arrows: Switch virtual desktops in Windows 10.
 Alt+Left or Right arrow keys: File explorer navigation through your history.
-                              This is the same in the web browser.
+                              This is the same in web browsers.
 Alt+Tab: Jump between two programs.
 Alt+Ctrl+Tab: Frozen application switch.
 Alt+F4: Close the application. On the desktop, it will shut down the Windows.
