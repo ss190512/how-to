@@ -67,3 +67,15 @@ n N ?pattern<CR> Scan document for previous match
 & u :s/target/replacement or :substitute/target/replacement Perform substitution
 @x u qx{changes}q Execute a sequence of changes
 ```
+## Search and replace with * command.
+```
+:set hls
+*
+cw<new word><Esc>
+n
+.
+```
+### Alternative way to do it.
+```
+:%s/<old_word>/<new word>/g 
+```
