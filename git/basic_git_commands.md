@@ -72,3 +72,9 @@ $ rm -rf .git/
 $ git status
 fatal: not a git repository (or any of the parent directories): .git
 ```
+## Clone git repository.
+```
+git clone <URL of repository(my_repository for example)>
+cd my_repository
+git status
+```
