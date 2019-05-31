@@ -121,6 +121,10 @@ find / -name something > output.txt 2> output.txt
 find / -name something > output.txt 2>&1
 find -name test.txt 2>&1 | tee /tmp/output1.txt
 ```
+## Find grep combination. Find import in all pythin files. 
+```
+find . -name "*.py" -exec grep -Hi import '{}' ';'
+```
 ## For loop.
 ```
 for f in * ; do echo $f; done
@@ -284,4 +288,8 @@ find is hashed (/usr/bin/find)
 -bash-4.4$ echo >/dev/tcp/server_name/23
 -bash: connect: Connection refused
 -bash: /dev/tcp/vs-iapp752/23: Connection refused
+```
+## Kill with grep. For example kill all oracle processes.
+```
+kill -9 `ps -awxu | grep -i oracle | grep -v grep | cut -c 9-14`
 ```
