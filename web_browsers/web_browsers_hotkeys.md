@@ -1,27 +1,58 @@
 ## Firefox/Chrome shortcuts(F/C)
 ```
-Ctrl+Shift+b: Display bookmarks(F).
-Ctrl+Shift+n: Undo closed window(F).
-Ctrl+Shift+t: Undo closed window(C).
-Ctrl+Shift+t: Undo closed tab(F/C).
-Ctrl+Shift+o: Display bookmarks(C).
-Ctrl+Shift+w: Close the window(Alt+F4)(F/C).
-Ctrl+Shift+Del: Clear history(F/C).
-Ctrl+Shift+Tab: Move to previous tab(F/C).
-Ctrl+d: Add a bookmark(F/C).
-Ctrl+f: Find bar (F/C).
-Ctrl+j: Download page(F/C).
-Ctrl+h: History(F/C).
-Ctrl+n: A new window(F/C).
-Ctrl+s: Save current page(F/C).
-Ctrl+t: A new tab(F/C).
-Ctrl+w: Close the tab(F/C).
-Ctrl+Tab: Move to next tab(F/C).
+Ctr+Shift+b: Display bookmarks(F).
+Ctr+Shift+b: On/off bookmark bar(C).
+Ctr+Shift+j: On/off developer tool(C)
+Ctr+Shift+m: Switch between users(C).
+Ctr+Shift+n: Undo closed window(F).
+Ctr+Shift+n: New window in incognito mode(C).
+Ctr+Shift+o: Display bookmarks(C).
+Ctr+Shift+t: Undo closed window(C).
+Ctr+Shift+t: Undo closed tab(F/C).
+Ctr+Shift+w: Close the window(Alt+F4)(F/C).
+Ctr+Shift+Del: Clear history(F/C).
+Ctr+Shift+Tab/PgDown: Move to previous tab(F/C).
+Ctr+Shift+click link: Open link in a new tab and switch into it(F/C).
+
+Shift+click link: Open link in a new window and switch into it(F/C).
+Shift+Esc: Open task manager(C).
+
+Ctr+click link: Open link in a new tab in background(F/C).
+Ctr+d: Add a bookmark(F/C).
+Ctr+f: Find(F/C).
+Ctr+g/Ctr+Shift+g/F3/Shift+F3/enter/Shift+enter: Finds next/previous find match(F/C).
+Ctr+j: Download page(F/C).
+Ctr+h: History(F/C).
+Ctr+k/Ctr+e: Search by placing '?' in the address bar(F/C).
+Ctr+l/Alt+d: Highlights URL(F/C).
+Ctr+n: New window(F/C).
+Ctr+o: Open file(F/C).
+Ctr+s: Save current page(F/C).
+Ctr+t: A new tab(F/C).
+Ctr+u: Source of the current page(F/C).
+Ctr+w/F4: Close the tab(F/C).
+Ctr+Tab/PgUp: Move to next tab(F/C).
+Ctr+0: Returns everything on the page to normal size(F/C).
+Ctr+1-8: Switch tab to the chosen position(F/C).
+Ctr+9: Switch tab to the last position(F/C).
+Ctr+F5/Shift+F5: Reload page, ignoring cache(F/C).
+
 Alt+left/right arrows: Go back/forward page(F/C).
 Alt+F4: Close the current window(F/C).
+Alt+Home: Open homepage in the current window(F/C).
+Alt+e: Open main menu(F/C).
+Alt+ click: Download link(C).
+
 F5: Reload current page(F/C).
+F6/Shift+F6: Switch focus to the pane(F/C).
 F11: Switch to the full screen and back(F/C).
+
 End: Go to the bottom of the page(F/C).
 Home: Go to the top of the page(F/C).
-```
+Esc while dragging a tab: Return tab where it was before(F/C).
 
+Drag link into tab: Open link in the tab(F/C).
+Drag link to blank area on tabs: Open link in a new tab(F/C).
+Drag tab out of tabs: Open tab in a new window(F/C).
+Drag tab out of tabs into existing window: Open tab in the existing window(F/C).
+```
