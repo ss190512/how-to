@@ -79,3 +79,20 @@ n
 ```
 :%s/<old_word>/<new word>/g 
 ```
+## Delete word backward/forward/in one command(delete a word mnemonic).
+```
+db
+x
+
+b
+dw
+
+daw
+```
+## Count numbers(# is a number below).
+```
+<C-a>
+<C-x>
+#<C-x>
+#<C-x>
+```
