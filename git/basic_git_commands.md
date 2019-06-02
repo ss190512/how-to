@@ -78,3 +78,14 @@ git clone <URL of repository(my_repository for example)>
 cd my_repository
 git status
 ```
+## Push, pull commands.
+```
+git pull origin master
+git pull 
+git push origin master
+git push 
+
+alias gp='git pull && git push' 
+```
+
+
