@@ -96,3 +96,22 @@ daw
 #<C-x>
 #<C-x>
 ```
+## Operator Commands.
+```
+Trigger Effect
+--------------------
+c  Change 
+d  Delete 
+y  Yank into register 
+g~ Swap case 
+gu Make lowercase 
+gU Make uppercase. gUgU or gUU - uppercase the line.
+>  Shift right
+<  Shift left
+=  Autoindent
+!  Filter {motion} lines through an external program 
+```
+## Treat numbers as decimal.
+```
+set nrformats=
+```
