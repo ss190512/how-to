@@ -87,5 +87,15 @@ git push
 
 alias gp='git pull && git push' 
 ```
+## Add and commit in one command(can be done only with tracked files).
+```
+$ git commit -am "My first commit"
 
+alias gac='git commit -am'
+```
+## List of tracked files.
+```
+$ git ls-files
 
+alias gl='git ls-files'
+```
