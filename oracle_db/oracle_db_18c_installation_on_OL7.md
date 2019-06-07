@@ -49,6 +49,14 @@ ol76odb18.localdomain
 [root@ol76odb18 ~]# cat /etc/hostname
 ol76odb18.localdomain
 ```
+### Check memory which should be at least 8Gb.
+```
+[oracle@ol76odb18 ~]$ free --mega
+              total        used        free      shared  buff/cache   available
+Mem:           8910         316        8171          11         422        8427
+Swap:          3967           0        3967
+[oracle@ol76odb18 ~]$
+```
 ## Install oracle software.
 ### Install oracle-database-preinstall-18c package.
 ```
@@ -132,12 +140,280 @@ dbshut $ORACLE_HOME
 [oracle@ol76odb18 scripts]$ chmod u+x /home/oracle/scripts/*.sh
 
 ```
-### Run X-server for example MobaXterm.
+### Run X-server(for example MobaXterm).
 ### Unzip oracle software.
 ```
 [oracle@ol76odb18 scripts]$ cd $ORACLE_HOME
 [oracle@ol76odb18 dbhome_1]$ pwd
 /u01/app/oracle/product/18.3/dbhome_1
 [oracle@ol76odb18 dbhome_1]$ unzip -oq /home/oracle/download/LINUX.X64_180000_db_home.zip
+```
+### Run the installer.
+```
+# Silent mode.
+[oracle@ol76odb18 dbhome_1]$ pwd
+/u01/app/oracle/product/18.3/dbhome_1
+[oracle@ol76odb18 dbhome_1]$ ./runInstaller -ignorePrereq -waitforcompletion -silent                        \
+    -responseFile ${ORACLE_HOME}/install/response/db_install.rsp\
+    oracle.install.option=INSTALL_DB_SWONLY\
+    ORACLE_HOSTNAME=${ORACLE_HOSTNAME}\
+    UNIX_GROUP_NAME=oinstall\
+    INVENTORY_LOCATION=${ORA_INVENTORY}\
+    SELECTED_LANGUAGES=en\
+    ORACLE_HOME=${ORACLE_HOME}\
+    ORACLE_BASE=${ORACLE_BASE}\
+    oracle.install.db.InstallEdition=EE\
+    oracle.install.db.OSDBA_GROUP=dba\
+    oracle.install.db.OSBACKUPDBA_GROUP=dba\
+    oracle.install.db.OSDGDBA_GROUP=dba\
+    oracle.install.db.OSKMDBA_GROUP=dba\
+    oracle.install.db.OSRACDBA_GROUP=dba\
+    SECURITY_UPDATES_VIA_MYORACLESUPPORT=false\
+    DECLINE_SECURITY_UPDATES=true
+
+Launching Oracle Database Setup Wizard...
+[WARNING] [INS-13014] Target environment does not meet some optional requirements.
+   CAUSE: Some of the optional prerequisites are not met. See logs for details. installActions2019-06-06_11-50-13PM.log
+   ACTION: Identify the list of failed prerequisite checks from the log: installActions2019-06-06_11-50-13PM.log. Then either from the log file or from installation manual find the appropriate configuration to meet the prerequisites and fix it manually.
+The response file for this session can be found at:
+ /u01/app/oracle/product/18.3/dbhome_1/install/response/db_2019-06-06_11-50-13PM.rsp
+You can find the log of this install session at:
+ /tmp/InstallActions2019-06-06_11-50-13PM/installActions2019-06-06_11-50-13PM.log
+As a root user, execute the following script(s):
+        1. /u01/app/oraInventory/orainstRoot.sh
+        2. /u01/app/oracle/product/18.3/dbhome_1/root.sh
+Execute /u01/app/oraInventory/orainstRoot.sh on the following nodes:
+[ol76odb18]
+Execute /u01/app/oracle/product/18.3/dbhome_1/root.sh on the following nodes:
+[ol76odb18]
+Successfully Setup Software with warning(s).
+Moved the install session logs to:
+ /u01/app/oraInventory/logs/InstallActions2019-06-06_11-50-13PM
+```
+### Check warnings.
+```
+[oracle@ol76odb18 InstallActions2019-06-06_11-50-13PM]$ pwd
+/u01/app/oraInventory/logs/InstallActions2019-06-06_11-50-13PM
+[oracle@ol76odb18 InstallActions2019-06-06_11-50-13PM]$ less  installActions2019-06-06_11-50-13PM.log
+...
+WARNING:  [Jun 6, 2019 11:50:24 PM] Result values are not available for this verification task
+INFO:  [Jun 6, 2019 11:50:24 PM] Creating CompositePrereqChecker Job for container task User Existence: oracle
+INFO:  [Jun 6, 2019 11:50:24 PM] Creating PrereqChecker Job for leaf task Users With Same UID: 54321
+INFO:  [Jun 6, 2019 11:50:24 PM] Creating PrereqChecker Job for leaf task Users With Same UID: 54321
+INFO:  [Jun 6, 2019 11:50:24 PM] *********************************************
+INFO:  [Jun 6, 2019 11:50:24 PM] Group Existence: dba: This is a prerequisite condition to test whether group "dba" exists on the system.
+INFO:  [Jun 6, 2019 11:50:24 PM] Severity:CRITICAL
+INFO:  [Jun 6, 2019 11:50:24 PM] OverallStatus:SUCCESSFUL
+INFO:  [Jun 6, 2019 11:50:24 PM] -----------------------------------------------
+INFO:  [Jun 6, 2019 11:50:24 PM] Verification Result for Node:ol76odb18
+WARNING:  [Jun 6, 2019 11:50:24 PM] Result values are not available for this verification task
+INFO:  [Jun 6, 2019 11:50:24 PM] *********************************************
+INFO:  [Jun 6, 2019 11:50:24 PM] Group Existence: oinstall: This is a prerequisite condition to test whether group "oinstall" exists on the system.
+INFO:  [Jun 6, 2019 11:50:24 PM] Severity:CRITICAL
+INFO:  [Jun 6, 2019 11:50:24 PM] OverallStatus:SUCCESSFUL
+INFO:  [Jun 6, 2019 11:50:24 PM] -----------------------------------------------
+INFO:  [Jun 6, 2019 11:50:24 PM] Verification Result for Node:ol76odb18
+WARNING:  [Jun 6, 2019 11:50:24 PM] Result values are not available for this verification task
+INFO:  [Jun 6, 2019 11:50:24 PM] *********************************************
+INFO:  [Jun 6, 2019 11:50:24 PM] Group Membership: oinstall(Primary): This is a prerequisite condition to test whether user "oracle" has group "oinstall" as its primary group.
+INFO:  [Jun 6, 2019 11:50:24 PM] Severity:CRITICAL
+INFO:  [Jun 6, 2019 11:50:24 PM] OverallStatus:SUCCESSFUL
+INFO:  [Jun 6, 2019 11:50:24 PM] -----------------------------------------------
+INFO:  [Jun 6, 2019 11:50:24 PM] Verification Result for Node:ol76odb18
+WARNING:  [Jun 6, 2019 11:50:24 PM] Result values are not available for this verification task
+INFO:  [Jun 6, 2019 11:50:24 PM] *********************************************
+INFO:  [Jun 6, 2019 11:50:24 PM] Group Membership: dba: This is a prerequisite condition to test whether user "oracle" is a member of the group "dba".
+INFO:  [Jun 6, 2019 11:50:24 PM] Severity:CRITICAL
+INFO:  [Jun 6, 2019 11:50:24 PM] OverallStatus:SUCCESSFUL
+INFO:  [Jun 6, 2019 11:50:24 PM] -----------------------------------------------
+INFO:  [Jun 6, 2019 11:50:24 PM] Verification Result for Node:ol76odb18
+WARNING:  [Jun 6, 2019 11:50:24 PM] Result values are not available for this verification task
+INFO:  [Jun 6, 2019 11:50:24 PM] *********************************************
+
+```
+### Run root scripts.
+```
+[root@ol76odb18 ~]# cd /u01/app/oraInventory
+[root@ol76odb18 oraInventory]# ./orainstRoot.sh
+Changing permissions of /u01/app/oraInventory.
+Adding read,write permissions for group.
+Removing read,write,execute permissions for world.
+Changing groupname of /u01/app/oraInventory to oinstall.
+The execution of the script is complete.
+[root@ol76odb18 oraInventory]# cd /u01/app/oracle/product/18.3/dbhome_1
+[root@ol76odb18 dbhome_1]# ./root.sh
+Check /u01/app/oracle/product/18.3/dbhome_1/install/root_ol76odb18.localdomain_2019-06-07_00-00-48-655715599.log for the output of root script
+[root@ol76odb18 dbhome_1]#
+```
+## Enable read-only oracle home.
+```
+[oracle@ol76odb18 logs]$ cd $ORACLE_HOME/bin
+
+[oracle@ol76odb18 bin]$ ./roohctl -enable
+Enabling Read-Only Oracle home.
+Update orabasetab file to enable Read-Only Oracle home.
+Orabasetab file has been updated successfully.
+Create bootstrap directories for Read-Only Oracle home.
+Bootstrap directories have been created successfully.
+Bootstrap files have been processed successfully.
+Read-Only Oracle home has been enabled successfully.
+Check the log file /u01/app/oracle/cfgtoollogs/roohctl/roohctl-190607AM020310.log.
+
+[oracle@ol76odb18 bin]$ ls $ORACLE_BASE
+cfgtoollogs/  checkpoints/  dbs/  diag/  homes/  product/
+
+[oracle@ol76odb18 homes]$ pwd
+/u01/app/oracle/homes
+[oracle@ol76odb18 homes]$ tree
+.
++-- OraDB18Home1
+    +-- assistants
+    ¦   +-- dbca
+    ¦       +-- templates
+    +-- dbs
+    +-- install
+    +-- network
+    ¦   +-- admin
+    ¦   +-- log
+    ¦   +-- trace
+    +-- rdbms
+        +-- audit
+        +-- log
+
+13 directories, 0 files
+[oracle@ol76odb18 homes]$
+```
+## Create a data-base.
+### Using oracle managed files(OMF).
+```
+[oracle@ol76odb18 bin]$ pwd
+/u01/app/oracle/product/18.3/dbhome_1/bin
+
+[oracle@ol76odb18 bin]$ dbca -silent -createDatabase \
+ -templateName General_Purpose.dbc \
+ -gdbname db1 -sid db1 -responseFile NO_VALUE \
+ -characterSet AL32UTF8 \
+ -sysPassword myPasswd#123 \
+ -systemPassword myPasswd#123 \
+ -createAsContainerDatabase false \
+ -pdbAdminPassword myPasswd#123 \
+ -databaseType MULTIPURPOSE \
+ -automaticMemoryManagement false \
+ -totalMemory 2048 \
+ -storageType FS \
+ -datafileDestination "/u02/oradata/" \
+ -useOMF true \
+ -redoLogFileSize 100 \
+ -emConfiguration NONE \
+ -ignorePreReqs
+
+Prepare for db operation
+10% complete
+Copying database files
+40% complete
+Creating and starting Oracle instance
+42% complete
+46% complete
+50% complete
+54% complete
+60% complete
+Completing Database Creation
+66% complete
+69% complete
+70% complete
+Executing Post Configuration Actions
+100% complete
+Database creation complete. For details check the logfiles at:
+ /u01/app/oracle/cfgtoollogs/dbca/db1.
+Database Information:
+Global Database Name:db1
+System Identifier(SID):db1
+Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/db1/db1.log" for further details.
+
+[oracle@ol76odb18 bin]$ sqlplus /nolog
+SQL*Plus: Release 18.0.0.0.0 - Production on Fri Jun 7 00:52:05 2019
+Version 18.3.0.0.0
+Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+SQL> conn / as sysdba
+Connected.
+SQL> select * from global_name;
+GLOBAL_NAME
+--------------------------------------------------------------------------------
+DB1
+
+[oracle@ol76odb18 dbs]$ pwd
+/u01/app/oracle/dbs
+[oracle@ol76odb18 dbs]$ tree
+.
++-- hc_db1.dat
++-- initdb1.ora
++-- lkDB1
++-- orapwdb1
++-- spfiledb1.ora
+0 directories, 5 files
+
+[oracle@ol76odb18 homes]$ pwd
+/u01/app/oracle/homes
+[oracle@ol76odb18 homes]$ tree
+.
++-- OraDB18Home1
+    +-- assistants
+    ¦   +-- dbca
+    ¦       +-- templates
+    +-- dbs
+    +-- install
+    +-- network
+    ¦   +-- admin
+    ¦   +-- log
+    ¦   +-- trace
+    +-- rdbms
+        +-- audit
+        +-- log
+            +-- db1_ora_29131.trc
+            +-- db1_ora_29321.trc
+            +-- db1_ora_29423.trc
+            +-- db1_ora_30790.trc
+            +-- db1_ora_30796.trc
+            +-- opatch
+            ¦   +-- lsinv
+            ¦   ¦   +-- lsinventory2019-06-07_02-15-07AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-15-12AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-16-47AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-16-53AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-17-00AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-18-23AM.txt
+            ¦   +-- opatch2019-06-07_02-15-07AM_1.log
+            ¦   +-- opatch2019-06-07_02-15-12AM_1.log
+            ¦   +-- opatch2019-06-07_02-16-47AM_1.log
+            ¦   +-- opatch2019-06-07_02-16-53AM_1.log
+            ¦   +-- opatch2019-06-07_02-17-00AM_1.log
+            ¦   +-- opatch2019-06-07_02-18-23AM_1.log
+            ¦   +-- opatch_history.txt
+            +-- qopatch.log
+            +-- qopatch_log.log
+15 directories, 20 files
+
+[oracle@ol76odb18 homes]$ cat $ORACLE_HOME/install/orabasetab
+#orabasetab file is used to track Oracle Home associated with Oracle Base
+/u01/app/oracle/product/18.3/dbhome_1:/u01/app/oracle:OraDB18Home1:Y:
+
+[oracle@ol76odb18 homes]$ cat /etc/oratab
+...
+db1:/u01/app/oracle/product/18.3/dbhome_1:N
+
+[oracle@ol76odb18 homes]$ $ORACLE_HOME/bin/orabaseconfig
+/u01/app/oracle
+[oracle@ol76odb18 homes]$ $ORACLE_HOME/bin/orabasehome
+/u01/app/oracle/homes/OraDB18Home1
+[oracle@ol76odb18 homes]$
+
+[oracle@ol76odb18 homes]$ cd $(orabaseconfig)
+[oracle@ol76odb18 oracle]$ pwd
+/u01/app/oracle
+[oracle@ol76odb18 oracle]$ cd $(orabasehome)
+[oracle@ol76odb18 OraDB18Home1]$ pwd
+/u01/app/oracle/homes/OraDB18Home1
+[oracle@ol76odb18 OraDB18Home1]$
+
 ```
 
