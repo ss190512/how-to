@@ -245,12 +245,45 @@ The execution of the script is complete.
 Check /u01/app/oracle/product/18.3/dbhome_1/install/root_ol76odb18.localdomain_2019-06-07_00-00-48-655715599.log for the output of root script
 [root@ol76odb18 dbhome_1]#
 ```
+## Enable read-only oracle home.
+```
+[oracle@ol76odb18 logs]$ cd $ORACLE_HOME/bin
+
+[oracle@ol76odb18 bin]$ ./roohctl -enable
+Enabling Read-Only Oracle home.
+Update orabasetab file to enable Read-Only Oracle home.
+Orabasetab file has been updated successfully.
+Create bootstrap directories for Read-Only Oracle home.
+Bootstrap directories have been created successfully.
+Bootstrap files have been processed successfully.
+Read-Only Oracle home has been enabled successfully.
+Check the log file /u01/app/oracle/cfgtoollogs/roohctl/roohctl-190607AM020310.log.
+
+[oracle@ol76odb18 bin]$ ls $ORACLE_BASE
+cfgtoollogs/  checkpoints/  dbs/  diag/  homes/  product/
+
+[oracle@ol76odb18 homes]$ pwd
+/u01/app/oracle/homes
+[oracle@ol76odb18 homes]$ tree
+.
++-- OraDB18Home1
+    +-- assistants
+    ¦   +-- dbca
+    ¦       +-- templates
+    +-- dbs
+    +-- install
+    +-- network
+    ¦   +-- admin
+    ¦   +-- log
+    ¦   +-- trace
+    +-- rdbms
+        +-- audit
+        +-- log
+
+13 directories, 0 files
+[oracle@ol76odb18 homes]$
+```
 ## Create a data-base.
-### Check oratab file.
-```
-[oracle@ol76odb18 ~]$ cat /etc/oratab
-#db1:/u01/app/oracle/product/18.3/dbhome_1:Y
-```
 ### Using oracle managed files(OMF).
 ```
 [oracle@ol76odb18 bin]$ pwd
@@ -307,5 +340,80 @@ SQL> select * from global_name;
 GLOBAL_NAME
 --------------------------------------------------------------------------------
 DB1
+
+[oracle@ol76odb18 dbs]$ pwd
+/u01/app/oracle/dbs
+[oracle@ol76odb18 dbs]$ tree
+.
++-- hc_db1.dat
++-- initdb1.ora
++-- lkDB1
++-- orapwdb1
++-- spfiledb1.ora
+0 directories, 5 files
+
+[oracle@ol76odb18 homes]$ pwd
+/u01/app/oracle/homes
+[oracle@ol76odb18 homes]$ tree
+.
++-- OraDB18Home1
+    +-- assistants
+    ¦   +-- dbca
+    ¦       +-- templates
+    +-- dbs
+    +-- install
+    +-- network
+    ¦   +-- admin
+    ¦   +-- log
+    ¦   +-- trace
+    +-- rdbms
+        +-- audit
+        +-- log
+            +-- db1_ora_29131.trc
+            +-- db1_ora_29321.trc
+            +-- db1_ora_29423.trc
+            +-- db1_ora_30790.trc
+            +-- db1_ora_30796.trc
+            +-- opatch
+            ¦   +-- lsinv
+            ¦   ¦   +-- lsinventory2019-06-07_02-15-07AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-15-12AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-16-47AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-16-53AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-17-00AM.txt
+            ¦   ¦   +-- lsinventory2019-06-07_02-18-23AM.txt
+            ¦   +-- opatch2019-06-07_02-15-07AM_1.log
+            ¦   +-- opatch2019-06-07_02-15-12AM_1.log
+            ¦   +-- opatch2019-06-07_02-16-47AM_1.log
+            ¦   +-- opatch2019-06-07_02-16-53AM_1.log
+            ¦   +-- opatch2019-06-07_02-17-00AM_1.log
+            ¦   +-- opatch2019-06-07_02-18-23AM_1.log
+            ¦   +-- opatch_history.txt
+            +-- qopatch.log
+            +-- qopatch_log.log
+15 directories, 20 files
+
+[oracle@ol76odb18 homes]$ cat $ORACLE_HOME/install/orabasetab
+#orabasetab file is used to track Oracle Home associated with Oracle Base
+/u01/app/oracle/product/18.3/dbhome_1:/u01/app/oracle:OraDB18Home1:Y:
+
+[oracle@ol76odb18 homes]$ cat /etc/oratab
+...
+db1:/u01/app/oracle/product/18.3/dbhome_1:N
+
+[oracle@ol76odb18 homes]$ $ORACLE_HOME/bin/orabaseconfig
+/u01/app/oracle
+[oracle@ol76odb18 homes]$ $ORACLE_HOME/bin/orabasehome
+/u01/app/oracle/homes/OraDB18Home1
+[oracle@ol76odb18 homes]$
+
+[oracle@ol76odb18 homes]$ cd $(orabaseconfig)
+[oracle@ol76odb18 oracle]$ pwd
+/u01/app/oracle
+[oracle@ol76odb18 oracle]$ cd $(orabasehome)
+[oracle@ol76odb18 OraDB18Home1]$ pwd
+/u01/app/oracle/homes/OraDB18Home1
+[oracle@ol76odb18 OraDB18Home1]$
+
 ```
 
