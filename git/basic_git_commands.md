@@ -40,7 +40,7 @@ Untracked files:
         three.txt
         two.txt
 nothing added to commit but untracked files present (use "git add" to track)
-$ git add .
+$ git add .   <-Add all files recursivly.
 $ git status
 On branch master
 No commits yet
