@@ -168,6 +168,10 @@ find is hashed (/usr/bin/find)
 $ grep -c import ser_lib.py
 31
 ``` 
+### Grep recursively and case-insensitive.
+``` 
+grep -ri <str> <dir>	
+``` 
 ## Useful aliases.
 ```
 alias g='git'
@@ -293,3 +297,35 @@ export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 ```
 kill -9 $(ps -awxu | grep -i oracle | grep -v grep | cut -c 9-14)
 ```
+## Curl examples.
+### Download file.
+```
+curl -OL <URL>
+```
+### Get HTTP header.
+```
+curl -I www.google.com
+HTTP/1.1 200 OK
+Date: Tue, 11 Jun 2019 22:42:12 GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=ISO-8859-1
+P3P: CP="This is not a P3P policy! See g.co/p3phelp for more info."
+Server: gws
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: 1P_JAR=2019-06-11-22; expires=Thu, 11-Jul-2019 22:42:12 GMT; path=/; domain=.google.com
+...
+```
+## Get amount of lines, words, and bytes in the text file.
+```
+wc bash_commands.md
+ 299  968 6099 bash_commands.md
+head bash_commands.md | wc
+     10      32     249
+grep curl bash_commands.md | wc
+      2       6      38
+grep ' al[a-z]*s ' bash_commands.md | wc
+      1       4      26
+```
+
