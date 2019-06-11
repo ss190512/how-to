@@ -38,7 +38,7 @@ mysqldump: [Warning] Using a password on the command line interface can be insec
 [root@ol76ms ~]# ll my_backup.sql
 -rw-r--r--. 1 root root 921555 Jun 11 01:47 my_backup.sql
 ```
-## Restore.
+## Recovery.
 ```
 [root@ol76ms ~]# mysql -uroot -p
 Enter password:
