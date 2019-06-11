@@ -136,7 +136,7 @@ $ ls
 $history
 ```
 ## fc - open the last command in the editor and run it after editing. 
-## Show the type of program.
+## Type, file, and command commands.
 ```
 $ type lr
 lr is aliased to `ls -lrt'
@@ -146,6 +146,20 @@ $ type time
 time is a shell keyword
 $ type pushd
 pushd is a shell builtin
+
+$ file $(which ls)
+/usr/bin/ls: PE32+ executable (console) x86-64 (stripped to external PDB), for MS Windows
+$ file bash_commands.md
+bash_commands.md: ASCII text, with CRLF line terminators
+
+$ command -V ls
+ls is aliased to `ls -F --color=auto --show-control-chars'
+$ command -V ll
+ll is aliased to `ls -l'
+$ command -V cd
+cd is a shell builtin
+$ command -V find
+find is hashed (/usr/bin/find)
 ```
 ## Grep examples.
 ### grep -iRl text * - Run grep recursively, ignoring uppercase, and showing only file names.
@@ -159,7 +173,8 @@ $ grep -c import ser_lib.py
 alias g='git'
 alias ga='git add'
 alias gc='git commit -m'
-alias gp='git push'
+alias gac='git commit -am'
+alias gp='git pull && git push'
 alias gs='git status'
 ```
 ## Put regexp in the alias.
@@ -167,7 +182,7 @@ alias gs='git status'
 alias my_reg='echo [0-9a-f]...
 ...| grep -E ${my_reg}
 ```
-## && works the same as ; but it runs the next one only if the previous one was successful.
+## && works the same as ";" but it runs the next one only if the previous one was successful.
 ```
 sudo apt update && sudo apt upgrade
 ```
@@ -266,21 +281,6 @@ export LESS_TERMCAP_so=$'\e[38;5;246m'    # standout-mode - info box
 export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 ```
-## File and command commands.
-```
-$ file $(which ls)
-/usr/bin/ls: PE32+ executable (console) x86-64 (stripped to external PDB), for MS Windows
-$ file bash_commands.md
-bash_commands.md: ASCII text, with CRLF line terminators
-$ command -V ls
-ls is aliased to `ls -F --color=auto --show-control-chars'
-$ command -V ll
-ll is aliased to `ls -l'
-$ command -V cd
-cd is a shell builtin
-$ command -V find
-find is hashed (/usr/bin/find)
-```
 ## Check port by echo.
 ```
 -bash-4.4$ echo >/dev/tcp/server_name/22
@@ -291,5 +291,5 @@ find is hashed (/usr/bin/find)
 ```
 ## Kill with grep. For example kill all oracle processes.
 ```
-kill -9 `ps -awxu | grep -i oracle | grep -v grep | cut -c 9-14`
+kill -9 $(ps -awxu | grep -i oracle | grep -v grep | cut -c 9-14)
 ```
