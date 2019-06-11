@@ -72,6 +72,9 @@ ls -d1 */
 ll -d */
 lr -d */
 Where: alias lr='ls -ltr'
+
+ls -F | grep "/$"
+ls -l | grep "^d"
 ```
 ## pushd and popd commands.
 ```
