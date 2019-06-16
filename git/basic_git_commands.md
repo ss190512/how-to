@@ -99,3 +99,11 @@ $ git ls-files
 
 alias gl='git ls-files'
 ```
+## Unstage file.
+```
+git reset HEAD <file name>
+```
+Discard changes in working directory.
+```
+git checkout -- <file name>
+```
