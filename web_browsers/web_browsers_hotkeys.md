@@ -56,3 +56,35 @@ Drag link to blank area on tabs: Open link in a new tab(F/C).
 Drag tab out of tabs: Open tab in a new window(F/C).
 Drag tab out of tabs into existing window: Open tab in the existing window(F/C).
 ```
+## Vimium shortcuts.
+```
+H/L: Back/forward in history.
+K,gt/J,gT: Tab right/left.
+t: New tab.
+x/X: Close/restore tab.
+?: Help.
+j/k: Scroll down/up.
+h/l: Scroll left/right.
+gg/G: tob/bottom.
+u,<c-u>/d,<c-d>:A half page up/down.
+<c-f>/<c-b>: A full page down/up.
+f/F:Open a link in the current/new tab.
+o/O: Open URL in the current/new tab.
+b/B: Open a bookmark in the current/new tab.
+T: Search through open tabs.
+r: Reload the page.
+gs: Page source.
+/: Find.
+n/N: Next/previous find match.
+yy: Copy the current URL to the clipboard.
+p/P: Open a clipboard's string in the current/new tab.
+i/v: Insert/visual mode.
+gi: Focus to the first text input.
+^: Go to the previously visited tab.
+g0/g$: Go to the first/last tab.
+yt: Duplicate tab.
+<a-p>: Pin/unpin tab.
+<a-m>: Mute/unmute current tab.
+```
+
+

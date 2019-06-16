@@ -115,3 +115,49 @@ gU Make uppercase. gUgU or gUU - uppercase the line.
 ```
 set nrformats=
 ```
+## Intend/auto-intend the whole file.
+```
+gg>G
+gg<G
+gg=G
+```
+## Insert mode and Vim’s command line short keys.
+```
+<C-h>: Backspace.
+<C-w>: Del back one word.
+<C-u>: Del back to the beginning of line.
+```
+## Switch short keys.
+```
+<C-[>: Switch to normal mode.
+<C-o>: Switch to insert normal mode.
+```
+## Scroll the screen in the middle in the insert mode.
+```
+<C-o>zz
+```
+## Insert from the default buffer in the insert mode.
+```
+<C-r>0
+<C-r><C-p>0
+```
+## Expression register.
+```
+<C-r>=
+```
+## Numeric code for a character.
+```
+ga
+```
+## Entering characters from the insert mode.
+```
+<C-v>{123}: By decimal code.
+<C-v>u{123}: By hexadecimal code.
+<C-v>{nondigit}: Nondigit literally.
+<C-k>{char1}{char2}: Represented by {char1}{char2} digraph(:h digraph-table). 
+```
+## Replace/virtual replace, single character/single character virtual replace modes.
+```
+R/gR
+r/gr
+```
