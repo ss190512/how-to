@@ -103,7 +103,25 @@ alias gl='git ls-files'
 ```
 git reset HEAD <file name>
 ```
-Discard changes in working directory.
+## Discard changes in working directory.
 ```
 git checkout -- <file name>
+```
+## Renaming by git.
+```
+git mv <old file> <new file>
+git commit 
+```
+### Renaming by OS commands.
+```
+mv <old file> <new file>
+git add -A 
+git commit 
+```
+### Another way of renaming by OS commands.
+```
+mv <old file> <new file>
+git add <new file>
+git -u
+git commit 
 ```
