@@ -125,3 +125,20 @@ git add <new file>
 git -u
 git commit 
 ```
+## Delete tracked files.
+```
+git rm <file name>
+git commit
+```
+## Delete tracked file and return it back to the working directory.
+```
+git rm <file name>
+git reset HEAD <file name>
+git checkout -- <file name>
+```
+## Remove by OS command.
+```
+rm <file name>.txt
+git add -A
+git commit
+```
